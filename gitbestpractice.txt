@@ -1,0 +1,149 @@
+### **🚀 Git Best Practices & Essential Commands**  
+To ensure a smooth workflow, follow these best practices when working with Git in your Spring Boot CRUD project.  
+
+---
+
+## **1️⃣ Initial Setup (One-time Per Project)**
+✅ **Run these commands once when setting up Git in a new project**  
+```sh
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+git init
+git remote add origin https://github.com/your-username/repository.git
+git branch -M main
+```
+
+---
+
+## **2️⃣ Daily Workflow Best Practices**
+💡 **Follow these steps every time you work on your project**  
+
+### **1. Always Start with the Latest Code**
+Before making any changes, fetch the latest updates from the remote repository:
+```sh
+git pull origin main
+```
+
+---
+
+### **2. Create a New Branch for Each Feature or Bug Fix**
+📌 Instead of working directly on `main`, create a new branch:  
+```sh
+git checkout -b feature-branch-name
+```
+Examples:
+```sh
+git checkout -b feature-add-user
+git checkout -b bugfix-login-issue
+```
+
+---
+
+### **3. Make Your Changes & Commit Regularly**
+💾 **Save your progress frequently with meaningful commit messages**  
+```sh
+git add .
+git commit -m "Add feature: User registration API"
+```
+✅ **Best Practices for Commit Messages:**
+- Start with a verb (Add, Fix, Update, Remove, Refactor).
+- Keep it short and descriptive.
+- Explain *what* you changed, not *how*.
+
+❌ **Bad commit messages:**
+```
+Fixed some stuff
+Updated file
+```
+✅ **Good commit messages:**
+```
+Fix: Resolve login issue for expired sessions
+Add: Implement user registration API
+Refactor: Optimize database queries for better performance
+```
+
+---
+
+### **4. Push Your Branch to GitHub**
+📤 After committing, push your branch to the remote repository:  
+```sh
+git push origin feature-branch-name
+```
+
+---
+
+### **5. Create a Pull Request (PR)**
+1. Go to your GitHub repository.  
+2. Click **"Compare & pull request"** next to your branch.  
+3. Add a clear description of your changes.  
+4. Request reviews if working in a team.  
+5. Merge the branch when approved.  
+
+---
+
+### **6. Keep Your Local Branch Up-to-Date**
+If your branch falls behind `main`, update it:
+```sh
+git checkout main
+git pull origin main
+git checkout feature-branch-name
+git merge main
+```
+or using **rebase** (cleaner history):
+```sh
+git rebase main
+```
+
+---
+
+### **7. Merge and Delete Feature Branch**
+After merging your branch into `main`:
+```sh
+git checkout main
+git merge feature-branch-name
+git push origin main
+git branch -d feature-branch-name
+```
+
+---
+
+## **3️⃣ Handling Common Issues**
+❌ **Problem: "Updates were rejected because the remote contains work that you do not have"**  
+✅ **Solution:** Sync with the remote repo before pushing:
+```sh
+git pull --rebase origin main
+git push origin main
+```
+
+❌ **Problem: Accidentally committed wrong changes**  
+✅ **Solution:** Undo last commit (before pushing):
+```sh
+git reset --soft HEAD~1
+```
+Or undo a specific file:
+```sh
+git checkout -- filename
+```
+
+---
+
+## **4️⃣ Git Workflow Summary**
+| **Action** | **Command** |
+|------------|------------|
+| Clone a repository | `git clone <repo-url>` |
+| Check current branch | `git branch` |
+| Create a new branch | `git checkout -b <branch-name>` |
+| Switch branches | `git checkout <branch-name>` |
+| Stage changes | `git add .` |
+| Commit changes | `git commit -m "Commit message"` |
+| Push changes | `git push origin <branch-name>` |
+| Update local branch | `git pull origin <branch-name>` |
+| Merge branch into main | `git checkout main` → `git merge <branch-name>` |
+| Delete local branch | `git branch -d <branch-name>` |
+| Delete remote branch | `git push origin --delete <branch-name>` |
+
+---
+
+## **5️⃣ Automating with GitHub Actions (Optional)**
+Would you like to automate testing and deployment using **GitHub Actions**?  
+Let me know, and I can guide you through setting up a **CI/CD pipeline** for your Spring Boot application! 🚀
