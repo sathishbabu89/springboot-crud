@@ -1,0 +1,14 @@
+# Ignore build and dependency files
+target/
+bin/
+*.class
+
+# Ignore IDE and OS-specific files
+*.iml
+*.log
+.idea/
+.vscode/
+.DS_Store
+
+# Ignore environment variables and credentials
+.env
